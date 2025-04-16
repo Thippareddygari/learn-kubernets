@@ -13,11 +13,11 @@ spec:
 
 apiVersion: v1
 kind: Pod
-  metadata:
-    name: p2
-    labels:
-      project: p2
-      application: c2
+metadata:
+  name: p2
+  labels:
+    project: p2
+    application: c2
 spec: 
   containers:
   - name: c2

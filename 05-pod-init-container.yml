@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: pod-init
 spec:
-  initcontainers:
+  initContainers:
     - name: debug
       image: docker.io/rkalluru/learnk8s:init-container-html-generator
       volumeMounts:

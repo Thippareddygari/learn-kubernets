@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-init-container
+  name: pod-init
 spec:
   initContainers:
     - name: debug
@@ -9,12 +9,13 @@ spec:
       volumeMounts:
       - mountPath: /mnt/html
         name: html
-  containers:
+  containers: 
     - name: nginx
       image: nginx
       volumeMounts:
-      - mountPath: /usr/share/nginx/html
-        name: html
+      -   mountPath: /usr/share.nginx/html
+          name: html
   volumes:
     - name: html
-      emptyDir: {}
+      emptyDir: {} 
+

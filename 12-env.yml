@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: envvar-demo
+  labels:
+    purpose: env
+spec:
+  containers:
+    - name: demo
+      image: nginx
+      env: 
+      - name: DEMO_GRETTING
+        value: "Hello"

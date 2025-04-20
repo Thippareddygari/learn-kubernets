@@ -4,8 +4,6 @@ metadata:
   name: nginx
 spec:
   replicas: 3
-  selector:
-    app: nginx
   template:
     metadata:
       name: nginx

@@ -29,7 +29,7 @@ spec:
     metadata:
       labels:
         component: catalogue
-    spec:
-      containers:
-        - name: catalogue
-          image:  public.ecr.aws/w8x4g9h7/roboshop-v3/catalogue
+  spec:
+    containers:
+    - name: catalogue
+      image:  public.ecr.aws/w8x4g9h7/roboshop-v3/catalogue

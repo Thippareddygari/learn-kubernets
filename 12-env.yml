@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: demo
-      image: nginx
+      image: docker.io/rkalluru/learnk8s:rhel9-bare
       env: 
       - name: DEMO_GRETTING
         value: "Hello"

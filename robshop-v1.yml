@@ -4,16 +4,16 @@
   metadata:
     name: frontend
   data:
-  CATALOGUE_HOST: catalogue 
-  CATALOGUE_PORT: "8080"
-  USER_PORT: "8080"
-  USER_HOST: user
-  CART_HOST: cart
-  CART_PORT: "8080 "
-  SHIPPING_HOST: shipping
-  SHIPPING_PORT: "8080" 
-  PAYMENT_HOST: payment
-  PAYMENT_PORT: "8080"  
+    CATALOGUE_HOST: catalogue 
+    CATALOGUE_PORT: "8080"
+    USER_PORT: "8080"
+    USER_HOST: user
+    CART_HOST: cart
+    CART_PORT: "8080 "
+    SHIPPING_HOST: shipping
+    SHIPPING_PORT: "8080" 
+    PAYMENT_HOST: payment
+    PAYMENT_PORT: "8080"  
 
 ---
 apiVersion: apps/v1

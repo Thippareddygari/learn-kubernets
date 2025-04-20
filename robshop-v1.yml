@@ -15,21 +15,3 @@ spec:
       containers:
         - name: frontend
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: catalogue1
-spec:
-  replicas: 1
-  selector: 
-    matchLabels:
-      component: catalogue
-  template:
-    metadata:
-      labels:
-        component: catalogue
-  spec:
-    containers:
-    - name: catalogue
-      image:  public.ecr.aws/w8x4g9h7/roboshop-v3/catalogue

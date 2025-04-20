@@ -9,7 +9,7 @@
     USER_PORT: "8080"
     USER_HOST: localhost
     CART_HOST: localhost
-    CART_PORT: "8080 "
+    CART_PORT: "8080"
     SHIPPING_HOST: localhost
     SHIPPING_PORT: "8080" 
     PAYMENT_HOST: localhost

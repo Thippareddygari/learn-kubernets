@@ -4,23 +4,23 @@ metadata:
   name: hpa-test
 spec:
   replicas: 2
-  selector: 
+  selector:
     matchLabels:
       app: hpa
   template:
     metadata:
       labels:
         app: hpa
-    spec: 
+    spec:
       containers:
       - name: hpa
         image: rkalluru/hpa
         imagePullPolicy: Always
-        resources: 
-          requests: 
+        resources:
+          requests:
             memory: "64Mi"
             cpu: "250m"
-          limits: 
+          limits:
             memory: "128Mi"
             cpu: "500m"
 ---
@@ -29,18 +29,16 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: hpa-test
 spec:
-  scaleTargetRef: 
+  scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: hpa-test
   minReplicas: 2
   maxReplicas: 10
-  metrics: 
+  metrics:
   - type: Resource
-    resource: 
+    resource:
       name: cpu
-      target: 
-        type: utilization
-        averageUtilization: 50  
-
-    
+      target:
+        type: Utilization
+        averageUtilization: 50

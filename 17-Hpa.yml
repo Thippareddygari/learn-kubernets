@@ -16,8 +16,8 @@ spec:
       - name: hpa
         image: rkalluru/hpa
         imagePullPolicy: Always
-        resource: 
-          request: 
+        resources: 
+          requests: 
             memory: "64Mi"
             cpu: "250m"
           limits: 

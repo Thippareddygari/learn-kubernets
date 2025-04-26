@@ -295,7 +295,7 @@ spec:
     spec:
       containers:
       - name: schema-load
-        image: 
+        image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
         env: 
         - name: DB_TYPE
           value: mongo
@@ -304,7 +304,7 @@ spec:
         - name: DB_HOST
           value: mongodb--dev.kommanuthala.store
         - name: SCHEMA_FILE
-          value: db/master-data.js public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          value: db/master-data.js p
       restartPolicy: Never
   backoffLimit: 4
 

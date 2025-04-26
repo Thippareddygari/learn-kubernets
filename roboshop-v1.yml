@@ -45,7 +45,7 @@ kind: ConfigMap
 metadata:
   name: catalogue
 data: 
-  MONGO: true
+  MONGO: "true"
   MONGO_URL: "mongodb://mongodb-dev.kommanuthala.store/catalogue"
 ---
 apiVersion: apps/v1

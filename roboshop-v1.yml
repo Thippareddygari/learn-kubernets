@@ -305,7 +305,7 @@ spec:
           value: mongodb--dev.kommanuthala.store
         - name: SCHEMA_FILE
           value: db/master-data.js public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
-    restartPolicy: Never
+      restartPolicy: Never
   backoffLimit: 4
 
 

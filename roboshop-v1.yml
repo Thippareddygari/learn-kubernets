@@ -4,15 +4,15 @@
   metadata:
     name: frontend
   data:
-    CATALOGUE_HOST: localhost
+    CATALOGUE_HOST: "localhost"
     CATALOGUE_PORT: "8080"
     USER_PORT: "8080"
-    USER_HOST: localhost
-    CART_HOST: localhost
+    USER_HOST: "localhost"
+    CART_HOST: "localhost"
     CART_PORT: "8080"
-    SHIPPING_HOST: localhost
+    SHIPPING_HOST: "localhost"
     SHIPPING_PORT: "8080" 
-    PAYMENT_HOST: localhost
+    PAYMENT_HOST: "localhost"
     PAYMENT_PORT: "8080"  
 
 ---

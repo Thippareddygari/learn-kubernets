@@ -76,7 +76,7 @@ kind: ConfigMap
 metadata:
   name: cart
 data:
-  CART_HOST: cart 
+  CART_HOST: "cart" 
   CATALOGUE_PORT: "8080"
   REDIS_HOST: "redis-dev.kommanuthala.store"
 ---
@@ -110,9 +110,9 @@ kind: ConfigMap
 metadata:
   name: shipping
 data:
-  SHIPPING_HOST: localhost 
-  CART_ENDPOINT: localhost 
-  DB_HOST: mysql-dev.kommanuthala.store
+  SHIPPING_HOST: "shipping" 
+  CART_ENDPOINT: "cart" 
+  DB_HOST: "mysql-dev.kommanuthala.store"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -179,8 +179,8 @@ kind: ConfigMap
 metadata:
   name: user
 data:
-  PAYMENT_HOST: localhost 
-  MONGO: true
+  PAYMENT_HOST: "payment" 
+  MONGO: "true"
   MONGO_URL: "mongodb://mongodb-dev.kommanuthala.store:27017/users"
   REDIS_URL: "redis://redis-dev.kommanuthala.store:6379"
 ---

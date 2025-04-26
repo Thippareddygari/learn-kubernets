@@ -17,7 +17,7 @@ spec:
   selector:
     appName: nginx
   ports:
-    - port: 8080 #service port
+    - port: 80 #service port
       targetPort: 80 #nginx pod port
 ---
 apiVersion: v1

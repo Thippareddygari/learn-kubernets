@@ -1,32 +1,52 @@
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: frontend
+  data:
+    CATALOGUE_HOST: "catalogue"
+    CATALOGUE_PORT: "8080"
+    USER_PORT: "8080"
+    USER_HOST: "user"
+    CART_HOST: "cart"
+    CART_PORT: "8080"
+    SHIPPING_HOST: "shipping"
+    SHIPPING_PORT: "8080" 
+    PAYMENT_HOST: "payment"
+    PAYMENT_PORT: "8080"  
 
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: shipping
-data:
-  SHIPPING_HOST: "shipping" 
-  CART_ENDPOINT: "cart" 
-  DB_HOST: "mysql-dev.kommanuthala.store"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shipping
-  labels:
-    component: shipping
+  name: frontend
+  labels: 
+    component: frontend
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
-      component: shipping
+      component: frontend
   template:
     metadata:
       labels:
-        component: shipping
+        component: frontend
     spec:
-     containers:
-      - name: shipping
-        image:  public.ecr.aws/w8x4g9h7/roboshop-v3/shipping
+      containers:
+      - name: frontend
+        image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
         envFrom:
-          - configMapRef:
-              name: shipping
+           - configMapRef:
+              name: frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: LoadBalancer
+  selector:
+    labels:
+      component: frontend
+  ports:
+  - port: 80 # service port
+    targetPort: 80 #nginx port

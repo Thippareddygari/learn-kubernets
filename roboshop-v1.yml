@@ -225,7 +225,7 @@ metadata:
   labels: 
     component: catalogue
 spec: 
-    type: ClusterIp
+    type: ClusterIP 
     selector:
       component: catalogue
     ports:
@@ -239,7 +239,7 @@ metadata:
   labels:
     component: cart
 spec:
-  type: ClusterIp
+  type: ClusterIP 
   selector:
     component: cart
   ports:
@@ -253,7 +253,7 @@ metadata:
   labels:
     component: user
 spec:
-  type: ClusterIp
+  type: ClusterIP 
   selector:
     component: user
   ports:
@@ -267,7 +267,7 @@ metadata:
   labels:
     component: shipping
 spec:
-  type: ClusterIp
+  type: ClusterIP 
   selector:
     component: shipping
   ports:
@@ -281,7 +281,7 @@ metadata:
   labels:
     component: payment
 spec:
-  type: ClusterIp
+  type: ClusterIP
   selector:
     component: payment
   ports:

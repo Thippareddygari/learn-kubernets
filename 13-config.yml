@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: sample-data
 data:
-  DEMO_GRETING: "Hello from the env"
+  DEMO_GREETING: "Hello from the env"
   DEMO_FAREWELL: "Such a sweet sorrow"
 
 ---

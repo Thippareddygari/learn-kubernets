@@ -305,6 +305,7 @@ spec:
           value: mongodb--dev.kommanuthala.store
         - name: SCHEMA_FILE
           value: db/master-data.js 
+      restartPolicy: Never
   backoffLimit: 4
 
 

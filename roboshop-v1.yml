@@ -10,16 +10,16 @@
     CART_HOST: "cart"
     CART_PORT: "8080"
     SHIPPING_HOST: "shipping"
-    SHIPPING_PORT: "8080" 
+    SHIPPING_PORT: "8080"
     PAYMENT_HOST: "payment"
-    PAYMENT_PORT: "8080"  
+    PAYMENT_PORT: "8080"
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  labels: 
+  labels:
     component: frontend
 spec:
   replicas: 1
@@ -43,7 +43,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: catalogue
-data: 
+data:
   MONGO: "true"
   MONGO_URL: "mongodb://mongodb-dev.kommanuthala.store/catalogue"
 ---
@@ -55,7 +55,7 @@ metadata:
     component: catalogue
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       component: catalogue
   template:
@@ -76,7 +76,7 @@ metadata:
   name: cart
 data:
   CATALOGUE_HOST: "catalogue"
-  CART_HOST: "cart" 
+  CART_HOST: "cart"
   CATALOGUE_PORT: "8080"
   REDIS_HOST: "redis-dev.kommanuthala.store"
 ---
@@ -88,7 +88,7 @@ metadata:
     component: cart
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       component: cart
   template:
@@ -100,7 +100,7 @@ spec:
       - name: cart
         image:  public.ecr.aws/w8x4g9h7/roboshop-v3/cart
         envFrom:
-          - configMapRef: 
+          - configMapRef:
               name: cart
 
 ---
@@ -110,8 +110,8 @@ kind: ConfigMap
 metadata:
   name: shipping
 data:
-  SHIPPING_HOST: "shipping" 
-  CART_ENDPOINT: "cart" 
+  SHIPPING_HOST: "shipping"
+  CART_ENDPOINT: "cart"
   DB_HOST: "mysql-dev.kommanuthala.store"
 ---
 apiVersion: apps/v1
@@ -122,7 +122,7 @@ metadata:
     component: shipping
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       component: shipping
   template:
@@ -142,13 +142,13 @@ kind: ConfigMap
 metadata:
   name: payment
 data:
-  PAYMENT_HOST: "payment" 
-  CART_HOST: "cart" 
-  CART_PORT: "8080" 
+  PAYMENT_HOST: "payment"
+  CART_HOST: "cart"
+  CART_PORT: "8080"
   USER_HOST: "user"
-  USER_PORT: "8080" 
-  AMQP_HOST: "rabbitmq-dev.kommanuthala.store" 
-  AMQP_USER: "roboshop" 
+  USER_PORT: "8080"
+  AMQP_HOST: "rabbitmq-dev.kommanuthala.store"
+  AMQP_USER: "roboshop"
   AMQP_PASS: "roboshop123"
 ---
 apiVersion: apps/v1
@@ -159,7 +159,7 @@ metadata:
     component: payment
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       component: payment
   template:
@@ -179,7 +179,7 @@ kind: ConfigMap
 metadata:
   name: user
 data:
-  PAYMENT_HOST: "payment" 
+  PAYMENT_HOST: "payment"
   MONGO: "true"
   MONGO_URL: "mongodb://mongodb-dev.kommanuthala.store:27017/users"
   REDIS_URL: "redis://redis-dev.kommanuthala.store:6379"
@@ -190,7 +190,7 @@ metadata:
   name: user
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       component: user
   template:
@@ -202,7 +202,7 @@ spec:
       - name: user
         image:  public.ecr.aws/w8x4g9h7/roboshop-v3/user
         envFrom:
-          - configMapRef: 
+          - configMapRef:
              name: user
 ---
 apiVersion: v1
@@ -221,10 +221,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: catalogue
-  labels: 
+  labels:
     component: catalogue
-spec: 
-    type: ClusterIP 
+spec:
+    type: ClusterIP
     selector:
       component: catalogue
     ports:
@@ -238,7 +238,7 @@ metadata:
   labels:
     component: cart
 spec:
-  type: ClusterIP 
+  type: ClusterIP
   selector:
     component: cart
   ports:
@@ -252,7 +252,7 @@ metadata:
   labels:
     component: user
 spec:
-  type: ClusterIP 
+  type: ClusterIP
   selector:
     component: user
   ports:
@@ -266,7 +266,7 @@ metadata:
   labels:
     component: shipping
 spec:
-  type: ClusterIP 
+  type: ClusterIP
   selector:
     component: shipping
   ports:
@@ -292,22 +292,19 @@ kind: Job
 metadata:
   name: catalogue-schema
 spec:
-  template: 
+  template:
     spec:
       containers:
       - name: schema-load
         image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
-        env: 
+        env:
         - name: DB_TYPE
           value: mongo
         - name: APP_GIT_URL
           value: https://github.com/roboshop-devops-project-v3/catalogue
         - name: DB_HOST
-          value: mongodb--dev.kommanuthala.store
+          value: mongodb-dev.kommanuthala.store
         - name: SCHEMA_FILE
-          value: db/master-data.js 
+          value: db/master-data.js
       restartPolicy: Never
   backoffLimit: 4
-
-
-

@@ -75,6 +75,7 @@ kind: ConfigMap
 metadata:
   name: cart
 data:
+  CATALOGUE_HOST: "catalogue""
   CART_HOST: "cart" 
   CATALOGUE_PORT: "8080"
   REDIS_HOST: "redis-dev.kommanuthala.store"

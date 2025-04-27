@@ -304,8 +304,7 @@ spec:
         - name: DB_HOST
           value: mongodb--dev.kommanuthala.store
         - name: SCHEMA_FILE
-          value: db/master-data.js p
-      restartPolicy: Never
+          value: db/master-data.js 
   backoffLimit: 4
 
 
